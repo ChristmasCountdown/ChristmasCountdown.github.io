@@ -4,11 +4,15 @@
   <link rel="stylesheet" type="text/css" href="CSS.css">
 </head>
   <body>
-    <p id="Timer"></p>
+
+      <canvas id="tree" width="1920px" height="1080px"></canvas>
+      <canvas id="snow" width="1920px" height="1080px"></canvas>
+
+    
 
     <!-- <p id="tc">Till christmas</p> -->
 
-    <canvas id="snow" width="1920px" height="1080px"></canvas>
+   
 
       <script>
 
@@ -33,30 +37,39 @@
       </script>
 
       <script type="text/javascript">
-        var canvas = document.querySelector("#snow");
+        var canvas = document.querySelector("#tree");
         var context = canvas.getContext("2d");
          
         var myImage = new Image();
-        myImage.src = "Snowfall-sheet.png";
+        myImage.src = "ChristmasTree-sheet.png";
         myImage.addEventListener("load", loadImage, false);
          
+
+        function sleep(milliseconds) {
+        var start = new Date().getTime();
+        for (var i = 0; i < 1e7; i++) {
+          if ((new Date().getTime() - start) > milliseconds){
+            break;
+          }
+        }
+      } 
         function loadImage(e) {
           animate();
         }
          
         var shift = 0;
-        var frameWidth = 1280;
-        var frameHeight = 1280;
-        var totalFrames = 8;
+        var frameWidth = 1920;
+        var frameHeight = 1080;
+        var totalFrames = 7;
         var currentFrame = 0;
          
         function animate() {
-          context.clearRect(0, 0, 1280, 1280);
+          context.clearRect(0, 0, 1920, 1080);
          
           //draw each frame + place them in the middle
           context.drawImage(myImage, shift, 0, frameWidth, frameHeight, 0, 0, frameWidth, frameHeight);
          
-          shift += frameWidth + 1;
+          shift += frameWidth + 0;
          
           /*
             Start at the beginning once you've reached the
@@ -68,8 +81,62 @@
           }
          
           currentFrame++;
+
+          sleep(150);
          
           requestAnimationFrame(animate);
+        }
+      </script>
+
+      <script type="text/javascript">
+        var canvas1 = document.querySelector("#snow");
+        var context1 = canvas1.getContext("2d");
+         
+        var myImage1 = new Image();
+        myImage1.src = "Snowfall-sheet.png";
+        myImage1.addEventListener("load", loadImage1, false);
+         
+
+        function sleep1(milliseconds) {
+        var start = new Date().getTime();
+        for (var i = 0; i < 1e7; i++) {
+          if ((new Date().getTime() - start) > milliseconds){
+            break;
+          }
+        }
+      } 
+        function loadImage1(e) {
+          animate1();
+        }
+         
+        var shift = 0;
+        var frameWidth = 1920;
+        var frameHeight = 1080;
+        var totalFrames = 7;
+        var currentFrame = 0;
+         
+        function animate1() {
+          context1.clearRect(0, 0, 1920, 1080);
+         
+          //draw each frame + place them in the middle
+          context1.drawImage(myImage1, shift, 0, frameWidth, frameHeight, 0, 0, frameWidth, frameHeight);
+         
+          shift += frameWidth + 0;
+         
+          /*
+            Start at the beginning once you've reached the
+            end of your sprite!
+          */
+          if (currentFrame == totalFrames) {
+            shift = 0;
+            currentFrame = 0;
+          }
+         
+          currentFrame++;
+
+          sleep1(150);
+         
+          requestAnimationFrame(animate1);
         }
       </script>
 
