@@ -5,7 +5,8 @@
 </head>
   <body>
 
-      <canvas id="tree" width="1920px" height="1080px"></canvas>
+      <canvas id="tree1" width="1920px" height="1080px"></canvas>
+      <canvas id="tree2" width="1920px" height="1080px"></canvas>
       <canvas id="snow" width="1920px" height="1080px"></canvas>
 
     
@@ -37,7 +38,7 @@
       </script>
 
       <script type="text/javascript">
-        var canvas = document.querySelector("#tree");
+        var canvas = document.querySelector("#tree1");
         var context = canvas.getContext("2d");
          
         var myImage = new Image();
@@ -60,7 +61,7 @@
         var shift = 0;
         var frameWidth = 1920;
         var frameHeight = 1080;
-        var totalFrames = 7;
+        var totalFrames = 8;
         var currentFrame = 0;
          
         function animate() {
@@ -82,7 +83,7 @@
          
           currentFrame++;
 
-          sleep(150);
+          sleep(50);
          
           requestAnimationFrame(animate);
         }
@@ -112,7 +113,7 @@
         var shift = 0;
         var frameWidth = 1920;
         var frameHeight = 1080;
-        var totalFrames = 7;
+        var totalFrames = 8;
         var currentFrame = 0;
          
         function animate1() {
@@ -134,9 +135,61 @@
          
           currentFrame++;
 
-          sleep1(150);
+          sleep1(50);
          
           requestAnimationFrame(animate1);
+        }
+      </script>
+
+      <script type="text/javascript">
+        var canvas2 = document.querySelector("#tree2");
+        var context2 = canvas2.getContext("2d");
+         
+        var myImage2 = new Image();
+        myImage2.src = "ChristmasTree-sheet.png";
+        myImage2.addEventListener("load", loadImage2, false);
+         
+
+        function sleep2(milliseconds) {
+        var start = new Date().getTime();
+        for (var i = 0; i < 1e7; i++) {
+          if ((new Date().getTime() - start) > milliseconds){
+            break;
+          }
+        }
+      } 
+        function loadImage2(e) {
+          animate2();
+        }
+         
+        var shift = 0;
+        var frameWidth = 1920;
+        var frameHeight = 1080;
+        var totalFrames = 8;
+        var currentFrame = 0;
+         
+        function animate2() {
+          context2.clearRect(0, 0, 1920, 1080);
+         
+          //draw each frame + place them in the middle
+          context2.drawImage(myImage2, shift, 0, frameWidth, frameHeight, 0, 0, frameWidth, frameHeight);
+         
+          shift += frameWidth + 0;
+         
+          /*
+            Start at the beginning once you've reached the
+            end of your sprite!
+          */
+          if (currentFrame == totalFrames) {
+            shift = 0;
+            currentFrame = 0;
+          }
+         
+          currentFrame++;
+
+          sleep2(50);
+         
+          requestAnimationFrame(animate2);
         }
       </script>
 

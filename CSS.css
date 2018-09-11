@@ -29,10 +29,23 @@
 
 }
 
-#tree {
+#tree1 {
 	position: absolute;
+	left: 500px;
   	height: 100%;
   	width: 100%;
   	z-index: 1;
+  	transform: scale(0.7);
+
+}
+
+#tree2 {
+	position: absolute;
+	top: 95px;
+	left: 400px;
+  	height: 100%;
+  	width: 100%;
+  	z-index: 1;
+  	transform: scale(0.5);
 
 }
