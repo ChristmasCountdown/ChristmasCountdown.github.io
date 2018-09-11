@@ -49,10 +49,10 @@
         var currentFrame = 0;
          
         function animate() {
-          context.clearRect(120, 25, 300, 300);
+          context.clearRect(0, 0, 1280, 1280);
          
           //draw each frame + place them in the middle
-          context.drawImage(myImage, shift, 0, frameWidth, frameHeight, 120, 25, frameWidth, frameHeight);
+          context.drawImage(myImage, shift, 0, frameWidth, frameHeight, 0, 0, frameWidth, frameHeight);
          
           shift += frameWidth + 1;
          
